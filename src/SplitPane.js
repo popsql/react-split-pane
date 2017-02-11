@@ -42,8 +42,14 @@ class SplitPane extends Component {
         document.addEventListener('touchmove', this.onTouchMove);
     }
 
-    componentWillReceiveProps(props) {
-        this.setSize(props, this.state);
+    componentWillReceiveProps(nextProps) {
+        if (this.props.split !== nextProps.split) {
+            const props = Object.assign({}, nextProps, { size: undefined });
+            const state = Object.assign({}, this.state, { draggedSize: undefined });
+            this.setSize(props, state);
+        } else {
+            this.setSize(nextProps, this.state);
+        }
     }
 
     componentWillUnmount() {
