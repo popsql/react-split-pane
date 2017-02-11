@@ -23,9 +23,9 @@ class Pane extends Component {
 
         if (this.state.size !== undefined) {
             if (split === 'vertical') {
-                style.width = this.state.size;
+                style.width = this.props.isOpen ? this.state.size : 0;
             } else {
-                style.height = this.state.size;
+                style.height = this.props.isOpen ? this.state.size : 0;
                 style.display = 'flex';
             }
             style.flex = 'none';
@@ -47,6 +47,7 @@ Pane.propTypes = {
         React.PropTypes.string,
         React.PropTypes.number,
     ]),
+    isOpen: PropTypes.bool,
 };
 
 Pane.defaultProps = {

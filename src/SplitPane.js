@@ -246,6 +246,7 @@ class SplitPane extends Component {
                       this.props.size || this.props.defaultSize || this.props.minSize :
                       undefined
                     }
+                    isOpen={this.props.pane1Open}
                 >
                     {children[0]}
                 </Pane>
@@ -308,6 +309,7 @@ SplitPane.propTypes = {
     paneStyle: stylePropType,
     pane1Style: stylePropType,
     pane2Style: stylePropType,
+    pane1Open: PropTypes.bool,
     className: PropTypes.string,
     resizerClassName: PropTypes.string,
     children: PropTypes.arrayOf(PropTypes.node).isRequired,
@@ -319,6 +321,7 @@ SplitPane.defaultProps = {
     allowResize: true,
     prefixer: new Prefixer({ userAgent: USER_AGENT }),
     primary: 'first',
+    pane1Open: true,
 };
 
 export default SplitPane;
